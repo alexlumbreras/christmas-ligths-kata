@@ -52,4 +52,13 @@ describe("The Christmas light board,", () => {
 
     expect(numberOfLights).toEqual(100);
   });
+
+  it("turn on all the lights on the board", () => {
+    const christmasLightsBoard = new ChristmasLightsBoard();
+
+    christmasLightsBoard.turnOn([0, 0], [999, 999]);
+    const numberOfLights = christmasLightsBoard.getLightsOn();
+
+    expect(numberOfLights).toEqual(1000000);
+  });
 });
