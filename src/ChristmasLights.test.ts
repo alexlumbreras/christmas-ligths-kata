@@ -1,9 +1,10 @@
 import { ChristmasLights } from "./ChristmasLights";
 
-describe("ChristmasLights", () => {
-  it("should ", () => {
-    const christmasLights = new ChristmasLights();
+describe("The Christmas light board,", () => {
+  it("has no lights turned on", () => {
+    const christmasLightsBoard = new ChristmasLights();
+    const numberOfLights = christmasLightsBoard.getLightsOn();
 
-    expect(christmasLights).toBeFalsy();
+    expect(numberOfLights).toEqual(0);
   });
 });
