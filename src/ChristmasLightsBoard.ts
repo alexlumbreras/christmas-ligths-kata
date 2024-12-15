@@ -15,10 +15,13 @@ export class ChristmasLightsBoard {
     const lightsBoard = this.christmasLightsBoard
       .flat()
       .filter((boardLight) => {
-        const isBoardLightOn = boardLight === 1;
+        const isBoardLightOn = boardLight !== 0;
         return isBoardLightOn;
       });
-    const numberOfLightsOn = lightsBoard.length;
+    const numberOfLightsOn = lightsBoard.reduce(
+      (accumulator, lightValue) => accumulator + lightValue,
+      0
+    );
 
     return numberOfLightsOn;
   }
@@ -33,7 +36,7 @@ export class ChristmasLightsBoard {
         columnIndex <= finalColumn;
         columnIndex++
       ) {
-        this.christmasLightsBoard[rowIndex][columnIndex] = 1;
+        this.christmasLightsBoard[rowIndex][columnIndex]++;
       }
     }
   }
@@ -48,7 +51,29 @@ export class ChristmasLightsBoard {
         columnIndex <= finalColumn;
         columnIndex++
       ) {
-        this.christmasLightsBoard[rowIndex][columnIndex] = 0;
+        const isLightTurnedOff =
+          this.christmasLightsBoard[rowIndex][columnIndex] === 0;
+        if (isLightTurnedOff) {
+          return;
+        }
+
+        this.christmasLightsBoard[rowIndex][columnIndex]--;
+      }
+    }
+  }
+
+  public toogle(
+    [initialRow, initialColumn]: number[],
+    [finalRow, finalColumn]: number[]
+  ) {
+    for (let rowIndex: number = initialRow; rowIndex <= finalRow; rowIndex++) {
+      for (
+        let columnIndex: number = initialColumn;
+        columnIndex <= finalColumn;
+        columnIndex++
+      ) {
+        this.christmasLightsBoard[rowIndex][columnIndex] =
+          this.christmasLightsBoard[rowIndex][columnIndex] + 2;
       }
     }
   }

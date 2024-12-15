@@ -91,4 +91,31 @@ describe("The Christmas light board,", () => {
 
     expect(numberOfLights).toEqual(0);
   });
+
+  it("Toggle the board with the first light turned on", () => {
+    const christmasLightsBoard = new ChristmasLightsBoard();
+
+    christmasLightsBoard.toogle([0, 0], [0, 0]);
+    const numberOfLights = christmasLightsBoard.getLightsOn();
+
+    expect(numberOfLights).toEqual(2);
+  });
+
+  it("Toggle the board with the lights at position [500,500], [509,509] turned on", () => {
+    const christmasLightsBoard = new ChristmasLightsBoard();
+
+    christmasLightsBoard.toogle([500, 500], [509, 509]);
+    const numberOfLights = christmasLightsBoard.getLightsOn();
+
+    expect(numberOfLights).toEqual(200);
+  });
+
+  it("Toggle the board with all lights turned on", () => {
+    const christmasLightsBoard = new ChristmasLightsBoard();
+
+    christmasLightsBoard.toogle([0, 0], [999, 999]);
+    const numberOfLights = christmasLightsBoard.getLightsOn();
+
+    expect(numberOfLights).toEqual(2000000);
+  });
 });
