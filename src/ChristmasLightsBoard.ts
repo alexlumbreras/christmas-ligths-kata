@@ -1,16 +1,13 @@
 export class ChristmasLightsBoard {
-  static readonly COLUMNS = 100;
-  public christmasLightsBoard: number[];
+  static readonly COLUMNS = 1000;
+
+  private christmasLightsBoard: number[];
 
   constructor() {
     this.christmasLightsBoard = new Array(ChristmasLightsBoard.COLUMNS).fill(0);
   }
 
   public getLightsOn(): number {
-    const christmasLights = this.christmasLightsBoard.filter(
-      (column) => column === 1
-    ).length;
-
-    return christmasLights;
+    return this.christmasLightsBoard.filter((column) => column === 1).length;
   }
 }
