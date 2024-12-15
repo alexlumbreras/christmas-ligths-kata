@@ -62,7 +62,7 @@ export class ChristmasLightsBoard {
     }
   }
 
-  public toogle(
+  public toggle(
     [initialRow, initialColumn]: number[],
     [finalRow, finalColumn]: number[]
   ) {

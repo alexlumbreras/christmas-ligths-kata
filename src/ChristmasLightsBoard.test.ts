@@ -95,7 +95,7 @@ describe("The Christmas light board,", () => {
   it("Toggle the board with the first light turned on", () => {
     const christmasLightsBoard = new ChristmasLightsBoard();
 
-    christmasLightsBoard.toogle([0, 0], [0, 0]);
+    christmasLightsBoard.toggle([0, 0], [0, 0]);
     const numberOfLights = christmasLightsBoard.getLightsOn();
 
     expect(numberOfLights).toEqual(2);
@@ -104,7 +104,7 @@ describe("The Christmas light board,", () => {
   it("Toggle the board with the lights at position [500,500], [509,509] turned on", () => {
     const christmasLightsBoard = new ChristmasLightsBoard();
 
-    christmasLightsBoard.toogle([500, 500], [509, 509]);
+    christmasLightsBoard.toggle([500, 500], [509, 509]);
     const numberOfLights = christmasLightsBoard.getLightsOn();
 
     expect(numberOfLights).toEqual(200);
@@ -113,9 +113,50 @@ describe("The Christmas light board,", () => {
   it("Toggle the board with all lights turned on", () => {
     const christmasLightsBoard = new ChristmasLightsBoard();
 
-    christmasLightsBoard.toogle([0, 0], [999, 999]);
+    christmasLightsBoard.toggle([0, 0], [999, 999]);
     const numberOfLights = christmasLightsBoard.getLightsOn();
 
     expect(numberOfLights).toEqual(2000000);
+  });
+
+  it("test: toggle lights and turn off/on specific lights correctly", () => {
+    const christmasLightsBoard = new ChristmasLightsBoard();
+
+    christmasLightsBoard.toggle([0, 0], [2, 2]);
+    christmasLightsBoard.turnOff([1, 1], [1, 1]);
+    christmasLightsBoard.turnOff([1, 1], [1, 1]);
+    christmasLightsBoard.turnOn([1, 1], [1, 1]);
+
+    const numberOfLights = christmasLightsBoard.getLightsOn();
+
+    expect(numberOfLights).toEqual(17);
+  });
+
+  it("the light cannot have a brightness less than zero", () => {
+    const christmasLightsBoard = new ChristmasLightsBoard();
+
+    christmasLightsBoard.turnOff([0, 0], [0, 0]);
+
+    const numberOfLights = christmasLightsBoard.getLightsOn();
+
+    expect(numberOfLights).toEqual(0);
+  });
+
+  it("verify correct number of lights after multiple on/off/toggle actions", () => {
+    const christmasLightsBoard = new ChristmasLightsBoard();
+
+    christmasLightsBoard.turnOn([887, 9], [959, 629]);
+    christmasLightsBoard.turnOn([454, 398], [844, 448]);
+    christmasLightsBoard.turnOff([539, 243], [559, 965]);
+    christmasLightsBoard.turnOff([370, 819], [676, 868]);
+    christmasLightsBoard.turnOff([145, 40], [370, 997]);
+    christmasLightsBoard.turnOff([301, 3], [808, 453]);
+    christmasLightsBoard.turnOn([351, 678], [951, 908]);
+    christmasLightsBoard.toggle([720, 196], [897, 994]);
+    christmasLightsBoard.toggle([831, 394], [904, 860]);
+
+    const numberOfLights = christmasLightsBoard.getLightsOn();
+
+    expect(numberOfLights).toEqual(557665);
   });
 });
