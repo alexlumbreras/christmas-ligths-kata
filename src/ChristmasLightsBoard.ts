@@ -23,9 +23,16 @@ export class ChristmasLightsBoard {
     return numberOfLightsOn;
   }
 
-  public turnOn(initialCoordinates: number[], finalCoordinates: number[]) {
-    return (this.christmasLightsBoard[initialCoordinates[0]][
-      initialCoordinates[1]
-    ] = 1);
+  public turnOn(
+    [initialRow, initialColumn]: number[],
+    [finalRow, finalColumn]: number[]
+  ) {
+    for (
+      let columnIndex: number = initialColumn;
+      columnIndex <= finalColumn;
+      columnIndex++
+    ) {
+      this.christmasLightsBoard[initialRow][columnIndex] = 1;
+    }
   }
 }
