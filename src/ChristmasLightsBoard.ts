@@ -27,12 +27,14 @@ export class ChristmasLightsBoard {
     [initialRow, initialColumn]: number[],
     [finalRow, finalColumn]: number[]
   ) {
-    for (
-      let columnIndex: number = initialColumn;
-      columnIndex <= finalColumn;
-      columnIndex++
-    ) {
-      this.christmasLightsBoard[initialRow][columnIndex] = 1;
+    for (let rowIndex: number = initialRow; rowIndex <= finalRow; rowIndex++) {
+      for (
+        let columnIndex: number = initialColumn;
+        columnIndex <= finalColumn;
+        columnIndex++
+      ) {
+        this.christmasLightsBoard[rowIndex][columnIndex] = 1;
+      }
     }
   }
 }
