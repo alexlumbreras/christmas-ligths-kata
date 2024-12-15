@@ -1,13 +1,25 @@
 export class ChristmasLightsBoard {
   static readonly COLUMNS = 1000;
+  static readonly ROWS = 1000;
 
-  private christmasLightsBoard: number[];
+  private christmasLightsBoard: number[][];
 
   constructor() {
-    this.christmasLightsBoard = new Array(ChristmasLightsBoard.COLUMNS).fill(0);
+    this.christmasLightsBoard = Array.from(
+      { length: ChristmasLightsBoard.ROWS },
+      () => new Array(ChristmasLightsBoard.COLUMNS).fill(0)
+    );
   }
 
   public getLightsOn(): number {
-    return this.christmasLightsBoard.filter((column) => column === 1).length;
+    const lightsBoard = this.christmasLightsBoard
+      .flat()
+      .filter((boardLight) => {
+        const isBoardLightOn = boardLight === 1;
+        return isBoardLightOn;
+      });
+    const numberOfLightsOn = lightsBoard.length;
+
+    return numberOfLightsOn;
   }
 }
