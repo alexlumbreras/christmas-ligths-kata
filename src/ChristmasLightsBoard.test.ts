@@ -61,4 +61,34 @@ describe("The Christmas light board,", () => {
 
     expect(numberOfLights).toEqual(1000000);
   });
+
+  it("turns off the first light on the board", () => {
+    const christmasLightsBoard = new ChristmasLightsBoard();
+
+    christmasLightsBoard.turnOn([0, 0], [999, 999]);
+    christmasLightsBoard.turnOff([0, 0], [0, 0]);
+    const numberOfLights = christmasLightsBoard.getLightsOn();
+
+    expect(numberOfLights).toEqual(999999);
+  });
+
+  it("turns off the lights on the board at position [500,500], [509,509]", () => {
+    const christmasLightsBoard = new ChristmasLightsBoard();
+
+    christmasLightsBoard.turnOn([0, 0], [999, 999]);
+    christmasLightsBoard.turnOff([500, 500], [509, 509]);
+    const numberOfLights = christmasLightsBoard.getLightsOn();
+
+    expect(numberOfLights).toEqual(999900);
+  });
+
+  it("turns off all the lights on the board", () => {
+    const christmasLightsBoard = new ChristmasLightsBoard();
+
+    christmasLightsBoard.turnOn([0, 0], [999, 999]);
+    christmasLightsBoard.turnOff([0, 0], [999, 999]);
+    const numberOfLights = christmasLightsBoard.getLightsOn();
+
+    expect(numberOfLights).toEqual(0);
+  });
 });

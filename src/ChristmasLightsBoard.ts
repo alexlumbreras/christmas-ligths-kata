@@ -37,4 +37,19 @@ export class ChristmasLightsBoard {
       }
     }
   }
+
+  public turnOff(
+    [initialRow, initialColumn]: number[],
+    [finalRow, finalColumn]: number[]
+  ) {
+    for (let rowIndex: number = initialRow; rowIndex <= finalRow; rowIndex++) {
+      for (
+        let columnIndex: number = initialColumn;
+        columnIndex <= finalColumn;
+        columnIndex++
+      ) {
+        this.christmasLightsBoard[rowIndex][columnIndex] = 0;
+      }
+    }
+  }
 }
