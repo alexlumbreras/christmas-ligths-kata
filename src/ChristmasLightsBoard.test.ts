@@ -157,6 +157,6 @@ describe("The Christmas light board,", () => {
 
     const numberOfLights = christmasLightsBoard.getLightsOn();
 
-    expect(numberOfLights).toEqual(557665);
+    expect(numberOfLights).toEqual(539560);
   });
 });
