@@ -7,4 +7,13 @@ describe("The Christmas light board,", () => {
 
     expect(numberOfLights).toEqual(0);
   });
+
+  it("turns on the light at position [0, 0]", () => {
+    const christmasLightsBoard = new ChristmasLightsBoard();
+
+    christmasLightsBoard.turnOn(0, 0, 0, 0);
+    const numberOfLights = christmasLightsBoard.getLightsOn();
+
+    expect(numberOfLights).toEqual(1);
+  });
 });
